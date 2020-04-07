@@ -16,9 +16,9 @@ import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharTrieTable;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechPointerStruct;
 import pasa.cbentley.powerdata.spec.src4.power.trie.ICharComparator;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerCharTrie;
+import pasa.cbentley.powerdata.spec.src4.spec.CharColUtilz;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 import pasa.cbentley.powerdata.src4.string.CharAggregateSearch;
-import pasa.cbentley.powerdata.src4.string.CharColUtilz;
 import pasa.cbentley.powerdata.src4.string.PowerCharColAggregate;
 import pasa.cbentley.powerdata.src4.utils.TableTrieFunction;
 

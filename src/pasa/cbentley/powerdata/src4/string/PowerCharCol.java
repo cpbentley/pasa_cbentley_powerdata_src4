@@ -12,6 +12,7 @@ import pasa.cbentley.powerdata.spec.src4.power.IPowerEnum;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharCol;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechSearchChar;
 import pasa.cbentley.powerdata.spec.src4.power.string.IPowerLinkStringToBytes;
+import pasa.cbentley.powerdata.spec.src4.spec.CharColUtilz;
 import pasa.cbentley.powerdata.src4.base.PowerBuildBase;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 

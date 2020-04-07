@@ -28,13 +28,13 @@ public abstract class FamilyChainedNodeData extends ByteObjectManaged implements
    protected final PDCtx         pdc;
 
    public FamilyChainedNodeData(PDCtx pdc, byte[] data, int index) {
-      super(pdc.getBoc(), data, index);
+      super(pdc.getBOC(), data, index);
       this.pdc = pdc;
       child = new IntBuffer(pdc.getUCtx(), 10);
    }
 
    public FamilyChainedNodeData(PDCtx pdc, ByteObjectManaged tech) {
-      super(pdc.getBoc(), tech);
+      super(pdc.getBOC(), tech);
       this.pdc = pdc;
       child = new IntBuffer(pdc.getUCtx(), 10);
    }

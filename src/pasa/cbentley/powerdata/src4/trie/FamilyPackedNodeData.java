@@ -1,7 +1,6 @@
 package pasa.cbentley.powerdata.src4.trie;
 
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
-import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.structs.IntBuffer;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechSpreadNodeData;
@@ -21,12 +20,12 @@ public abstract class FamilyPackedNodeData extends ByteObjectManaged implements 
    protected final PDCtx        pdc;
 
    public FamilyPackedNodeData(PDCtx pdc, byte[] data, int index) {
-      super(pdc.getBoc(), data, index);
+      super(pdc.getBOC(), data, index);
       this.pdc = pdc;
    }
 
    public FamilyPackedNodeData(PDCtx pdc, ByteObjectManaged tech) {
-      super(pdc.getBoc(), tech);
+      super(pdc.getBOC(), tech);
       this.pdc = pdc;
    }
 

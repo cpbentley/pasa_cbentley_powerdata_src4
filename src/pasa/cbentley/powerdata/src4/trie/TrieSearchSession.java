@@ -1,6 +1,5 @@
 package pasa.cbentley.powerdata.src4.trie;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.helpers.StringBBuilder;
@@ -11,8 +10,6 @@ import pasa.cbentley.core.src4.structs.IntToObjects;
 import pasa.cbentley.core.src4.structs.IntToStrings;
 import pasa.cbentley.powerdata.spec.src4.guicontrols.IPrefixSearchSession;
 import pasa.cbentley.powerdata.spec.src4.guicontrols.ISearchSession;
-import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
-import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharCol;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechSearchTrie;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerCharTrie;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodes;

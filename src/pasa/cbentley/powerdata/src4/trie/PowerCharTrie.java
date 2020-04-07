@@ -24,8 +24,8 @@ import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerCharTrie;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodes;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodesChar;
 import pasa.cbentley.powerdata.spec.src4.power.trie.TrieNodeTopo;
+import pasa.cbentley.powerdata.spec.src4.spec.CharColUtilz;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
-import pasa.cbentley.powerdata.src4.string.CharColUtilz;
 
 public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, ITechCharTrie, IPointerUser {
 

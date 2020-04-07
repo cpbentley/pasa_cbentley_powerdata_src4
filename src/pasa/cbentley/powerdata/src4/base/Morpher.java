@@ -196,7 +196,7 @@ public class Morpher {
       //aggregate all the data
       //Headers
       int sdataSize = +pointers.length + data.length;
-      ByteObjectManaged bo = pdc.getBoc().getByteObjectManagedFactory().create(headerSize, sdataSize);
+      ByteObjectManaged bo = pdc.getBOC().getByteObjectManagedFactory().create(headerSize, sdataSize);
       byte[] fullData = bo.getByteObjectData();
 
       int pointerTableOffSet = headerSize + data.length;

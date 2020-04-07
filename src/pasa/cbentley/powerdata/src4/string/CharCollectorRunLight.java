@@ -4,7 +4,6 @@ import pasa.cbentley.byteobjects.src4.core.ByteController;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.helpers.StringBBuilder;
-
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.utils.BitCoordinate;
 import pasa.cbentley.core.src4.utils.BitUtils;

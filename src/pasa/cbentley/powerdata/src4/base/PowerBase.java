@@ -18,7 +18,7 @@ public abstract class PowerBase extends ByteObjectManaged {
     * @param tech
     */
    public PowerBase(PDCtx pdc, ByteObjectManaged tech) {
-      super(pdc.getBoc(), tech);
+      super(pdc.getBOC(), tech);
       this.pdc = pdc;
    }
    

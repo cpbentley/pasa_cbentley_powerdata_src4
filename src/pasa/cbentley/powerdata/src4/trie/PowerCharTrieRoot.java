@@ -2,7 +2,6 @@ package pasa.cbentley.powerdata.src4.trie;
 
 import java.util.NoSuchElementException;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.helpers.StringBBuilder;
@@ -13,7 +12,6 @@ import pasa.cbentley.powerdata.spec.src4.guicontrols.ISearchSession;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerCharCollector;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerEnum;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharCol;
-import pasa.cbentley.powerdata.spec.src4.power.itech.ITechSearchChar;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerCharTrie;
 import pasa.cbentley.powerdata.src4.base.PowerBuildBase;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;

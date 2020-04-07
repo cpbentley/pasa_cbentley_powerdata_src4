@@ -3,7 +3,6 @@ package pasa.cbentley.powerdata.src4.string;
 import pasa.cbentley.byteobjects.src4.core.ByteController;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.ctx.UCtx;
-
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.utils.BitCoordinate;
 import pasa.cbentley.core.src4.utils.BitUtils;
@@ -200,7 +199,7 @@ public class BuildToRunConverter implements ITechCharColRun {
       this.build = build;
       this.init();
       byte[] data = this.getRunLight1();
-      ByteController byc = new ByteController(pdc.getBoc(), null, data);
+      ByteController byc = new ByteController(pdc.getBOC(), null, data);
       CharCollectorRunLight ccrl = (CharCollectorRunLight) byc.getAgentRoot();
       build.conversionTable = this.pointersOriginalToFinalRun;
       return ccrl;

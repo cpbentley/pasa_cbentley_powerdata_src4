@@ -24,7 +24,7 @@ public abstract class TableTrieFunction extends ByteObjectManaged {
    protected final PDCtx pdc;
 
    public TableTrieFunction(PDCtx pdc) {
-      super(pdc.getBoc());
+      super(pdc.getBOC());
       this.pdc = pdc;
    }
 

@@ -6,8 +6,8 @@ import pasa.cbentley.byteobjects.src4.ctx.IBOTypesBOC;
 import pasa.cbentley.byteobjects.src4.ctx.IDebugStringable;
 import pasa.cbentley.byteobjects.src4.tech.ITechObjectManaged;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.powerdata.spec.src4.engine.TechFactory;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
-import pasa.cbentley.powerdata.src4.base.TechFactory;
 import pasa.cbentley.powerdata.src4.trie.FastNodeData;
 import pasa.cbentley.powerdata.src4.trie.FastNodeDataChar;
 
@@ -30,7 +30,7 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
    protected final PDCtx   pdc;
 
    public BOPowerDataModule(PDCtx pdc) {
-      super(pdc.getBoc());
+      super(pdc.getBOC());
       this.pdc = pdc;
 
    }
@@ -168,5 +168,8 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       // TODO Auto-generated method stub
       return null;
    }
+
+
+ 
 
 }

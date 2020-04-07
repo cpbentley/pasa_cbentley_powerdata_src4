@@ -1,23 +1,18 @@
 package pasa.cbentley.powerdata.src4.trie;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteController;
-import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.utils.BitCoordinate;
 import pasa.cbentley.core.src4.utils.BitUtils;
 import pasa.cbentley.core.src4.utils.IntUtils;
 import pasa.cbentley.powerdata.spec.src4.power.IPointerUser;
-import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
 import pasa.cbentley.powerdata.spec.src4.power.MorphParams;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechFastNodeData;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechNodeData;
-import pasa.cbentley.powerdata.spec.src4.power.itech.ITechPointerStruct;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodes;
 import pasa.cbentley.powerdata.spec.src4.power.trie.TrieNode;
 import pasa.cbentley.powerdata.spec.src4.power.trie.TrieNodeTopo;
-import pasa.cbentley.powerdata.src4.ctx.BOPowerDataModule;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 
 /**
@@ -457,7 +452,7 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
       //printDataStruct("FastNodeData#serializePack Header Length=" + header.length);
 
       //encapsulates the header for easier manipulation.
-      ByteObjectManaged tr = new ByteObjectManaged(pdc.getBoc(), header, 0);
+      ByteObjectManaged tr = new ByteObjectManaged(pdc.getBOC(), header, 0);
 
       //System.out.println("FastNodeData#serializePack "+ByteObject.unwrapByteObject(header, 0).toString());
       int numElements = lastused; //the + 1 is needed

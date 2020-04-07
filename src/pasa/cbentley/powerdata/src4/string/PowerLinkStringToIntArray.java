@@ -1,20 +1,16 @@
 package pasa.cbentley.powerdata.src4.string;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteController;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.powerdata.spec.src4.power.IPointerUser;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerCharCollector;
-import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
 import pasa.cbentley.powerdata.spec.src4.power.MorphParams;
 import pasa.cbentley.powerdata.spec.src4.power.integers.IPowerLinkIntToInt;
 import pasa.cbentley.powerdata.spec.src4.power.integers.IPowerLinkIntToInts;
-import pasa.cbentley.powerdata.spec.src4.power.itech.ITechMorph;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechPointerStruct;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechStringLinker;
 import pasa.cbentley.powerdata.spec.src4.power.string.IPowerLinkStringToIntArray;
-import pasa.cbentley.powerdata.src4.ctx.BOPowerDataModule;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 
 /**

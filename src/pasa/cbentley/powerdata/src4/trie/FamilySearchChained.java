@@ -1,6 +1,5 @@
 package pasa.cbentley.powerdata.src4.trie;
 
-import pasa.cbentley.core.src4.utils.StringUtils;
 import pasa.cbentley.powerdata.spec.src4.power.trie.ICharComparator;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodes;
 import pasa.cbentley.powerdata.spec.src4.power.trie.IPowerTrieNodesChar;

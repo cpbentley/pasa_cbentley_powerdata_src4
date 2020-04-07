@@ -1,23 +1,17 @@
 package pasa.cbentley.powerdata.src4.string;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteController;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
-import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.structs.IntToStrings;
 import pasa.cbentley.core.src4.utils.StringUtils;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerCharCollector;
-import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerEnum;
 import pasa.cbentley.powerdata.spec.src4.power.MorphParams;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharCol;
-import pasa.cbentley.powerdata.spec.src4.power.itech.ITechNodeData;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechSearchTrie;
 import pasa.cbentley.powerdata.src4.base.PowerBuildBase;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
-import pasa.cbentley.powerdata.src4.trie.FastNodeDataChar;
 import pasa.cbentley.powerdata.src4.trie.PowerCharTrie;
-import pasa.cbentley.powerdata.src4.trie.TrieSearchSession;
 
 public class SubStrinxIndex extends PowerBuildBase {
 

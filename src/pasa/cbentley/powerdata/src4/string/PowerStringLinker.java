@@ -1,7 +1,5 @@
 package pasa.cbentley.powerdata.src4.string;
 
-import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
-import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.powerdata.spec.src4.power.IPointerUser;
@@ -10,7 +8,6 @@ import pasa.cbentley.powerdata.spec.src4.power.IPowerEnum;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechPointerStruct;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechStringLinker;
 import pasa.cbentley.powerdata.src4.base.PowerBuildBase;
-import pasa.cbentley.powerdata.src4.ctx.BOPowerDataModule;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 
 public abstract class PowerStringLinker extends PowerBuildBase implements IPointerUser, ITechStringLinker {

@@ -134,7 +134,7 @@ public class PowerOrderedIntToIntBuf extends PowerBuildBase implements IPowerInt
 
    private byte[] serializeRaw() {
       byte[] header = toByteArray();
-      ByteObjectManaged tr = new ByteObjectManaged(pdc.getBoc(), header);
+      ByteObjectManaged tr = new ByteObjectManaged(pdc.getBOC(), header);
 
       int numKeys = ints.getNumKeys();
       int dataSize = 4 + (numKeys * 2 * 4);

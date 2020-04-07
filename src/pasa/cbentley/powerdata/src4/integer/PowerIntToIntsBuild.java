@@ -133,7 +133,7 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
          int size = getSize();
          //ask factory to compress ? we don't want to know which
          //run implementation to use. its the job of the factory
-         return pdc.getTechFactory().getMorpher().createPowerIntToIntsRun(data, lengthsOfArrays, 0, size);
+         return pdc.getMorpher().createPowerIntToIntsRun(data, lengthsOfArrays, 0, size);
       } else {
          return this;
       }

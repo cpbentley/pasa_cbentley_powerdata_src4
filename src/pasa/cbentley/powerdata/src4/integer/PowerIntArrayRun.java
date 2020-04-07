@@ -58,7 +58,7 @@ public class PowerIntArrayRun extends ByteObjectManaged implements IPowerIntArra
     * @param tech
     */
    public PowerIntArrayRun(PDCtx pdc, ByteObjectManaged tech) {
-      super(pdc.getBoc(), tech);
+      super(pdc.getBOC(), tech);
       this.pdc = pdc;
    }
 

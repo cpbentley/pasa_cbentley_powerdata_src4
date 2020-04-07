@@ -508,7 +508,7 @@ public class FastToSpreadConverter {
          //System.out.println("family size =" + i + "\t#families=" + (_positions[i] / i) + "\t#nodes=" + _positions[i]);
       }
 
-      ByteObject header = new ByteObject(pdc.getBoc(), ITechSpreadNodeData.SPREAD_TYPE, ITechSpreadNodeData.SPREAD_BASIC_SIZE);
+      ByteObject header = new ByteObject(pdc.getBOC(), ITechSpreadNodeData.SPREAD_TYPE, ITechSpreadNodeData.SPREAD_BASIC_SIZE);
       //compute the position of each main block: 
       //offset of family information
       //position in fullData of child pointer info. It is next to Family

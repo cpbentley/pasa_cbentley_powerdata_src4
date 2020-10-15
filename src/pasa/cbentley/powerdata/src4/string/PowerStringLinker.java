@@ -129,7 +129,7 @@ public abstract class PowerStringLinker extends PowerBuildBase implements IPoint
    public void toString(Dctx dc) {
       dc.root(this, "PowerStringLinker");
       dc.appendVarWithSpace("pointerOffset",pointerOffset);
-      super.toString(dc.nLevel());
+      super.toString(dc.newLevel());
       dc.nlLvl(charco);
    }
 

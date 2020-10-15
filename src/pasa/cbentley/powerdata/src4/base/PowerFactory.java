@@ -312,7 +312,7 @@ public class PowerFactory implements IJavaObjectFactory, IPowerDataTypes, ITechM
          if (bom != null) {
             dc.nl();
             dc.append(i + " ");
-            bom.toString1Line(dc.nLevel());
+            bom.toString1Line(dc.newLevel());
          }
       }
    }

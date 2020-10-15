@@ -16,6 +16,11 @@ public class PDCtx extends PDCtxA {
    private BOPowerDataModule boPowerData;
 
  
+   public static final int CTX_ID= 14;
+   
+   public int getCtxID() {
+      return CTX_ID;
+   }
    private PowerFactory      powerFactory;
 
    private Morpher           morpher;
@@ -74,9 +79,6 @@ public class PDCtx extends PDCtxA {
    }
    //#enddebug
 
-   public int getCtxID() {
-      return 14;
-   }
 
    
 

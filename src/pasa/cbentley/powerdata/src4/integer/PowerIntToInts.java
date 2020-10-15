@@ -199,7 +199,7 @@ public abstract class PowerIntToInts extends PowerPointer implements IPowerLinkI
 
    public void toString(Dctx dc) {
       dc.root(this, "PowerIntToInts");
-      super.toString(dc.nLevel());
+      super.toString(dc.newLevel());
    }
 
    public void toString1Line(Dctx dc) {

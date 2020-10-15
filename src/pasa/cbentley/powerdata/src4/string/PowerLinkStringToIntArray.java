@@ -189,9 +189,9 @@ public class PowerLinkStringToIntArray extends PowerStringLinker implements IPoi
    
    public void toString(Dctx dc) {
       dc.root(this, "PowerLinkStringToIntArray");
-      pdc.getTechFactory().toStringPowerStringLinkerTech(dc.nLevel(), this);
-      super.toString(dc.nLevel());
-      doubleArray.toString(dc.nLevel());
+      pdc.getTechFactory().toStringPowerStringLinkerTech(dc.newLevel(), this);
+      super.toString(dc.newLevel());
+      doubleArray.toString(dc.newLevel());
    }
 
    

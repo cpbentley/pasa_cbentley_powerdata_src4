@@ -359,7 +359,7 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
    public void toString(Dctx sb) {
       sb.root(this, "TrieSearchSession");
       sb.nl();
-      pdc.getTechFactory().toStringTechTrieSearch(sb.nLevel(), tech);
+      pdc.getTechFactory().toStringTechTrieSearch(sb.newLevel(), tech);
       sb.nl();
       sb.append("searchRootNode=" + searchRootNode);
       ///

@@ -362,8 +362,8 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
    public void toString(Dctx sb) {
       sb.root(this, "PowerIntToIntsBuild");
       sb.appendVarWithSpace("Size", getSize());
-      pdc.getTechFactory().toStringPowerIntToIntsBuildTech(sb.nLevel(), this);
-      super.toString(sb.nLevel());
+      pdc.getTechFactory().toStringPowerIntToIntsBuildTech(sb.newLevel(), this);
+      super.toString(sb.newLevel());
 
       int size = getSize();
       for (int i = 0; i < size; i++) {

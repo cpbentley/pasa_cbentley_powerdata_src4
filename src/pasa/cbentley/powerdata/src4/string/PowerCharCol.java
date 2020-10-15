@@ -412,7 +412,7 @@ public abstract class PowerCharCol extends PowerBuildBase implements ITechCharCo
 
    public void toString(Dctx dc) {
       dc.root(this, "PowerCharCol");
-      super.toString(dc.nLevel());
+      super.toString(dc.newLevel());
    }
 
    public void toString1Line(Dctx dc) {

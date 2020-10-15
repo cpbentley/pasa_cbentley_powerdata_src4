@@ -58,7 +58,7 @@ public abstract class PowerBuildBase extends PowerBase implements IDataMorphable
 
    public void toString(Dctx dc) {
       dc.root(this, "PowerBuildBase");
-      super.toString(dc.nLevel());
+      super.toString(dc.newLevel());
    }
 
    public void toString1Line(Dctx dc) {

@@ -5,11 +5,10 @@ import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.ctx.IBOTypesBOC;
 import pasa.cbentley.byteobjects.src4.ctx.IDebugStringable;
 import pasa.cbentley.byteobjects.src4.tech.ITechObjectManaged;
+import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.powerdata.spec.src4.engine.TechFactory;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
-import pasa.cbentley.powerdata.src4.trie.FastNodeData;
-import pasa.cbentley.powerdata.src4.trie.FastNodeDataChar;
 
 /**
  * ByteObject module for all {@link ByteObject} defined in the scope of {@link PDCtx}.
@@ -35,9 +34,22 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
 
    }
 
+   public ByteObject getFlagOrdered(ByteObject bo, int offset, int flag) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
    public String getIDString(int did, int value) {
       return null;
+   }
+
+   public ByteObject merge(ByteObject root, ByteObject merge) {
+      int type = merge.getType();
+      switch (type) {
+         default:
+            //not found here
+            return null;
+      }
    }
 
    /**
@@ -97,54 +109,6 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       }
    }
 
-   /**
-    * Displays a name of the offset field. Reflection on the field.
-    * <br>
-    * @param type
-    * @return
-    */
-   public String subToStringOffset(ByteObject o, int offset) {
-      int type = o.getType();
-      switch (type) {
-         default:
-            return null;
-      }
-   }
-
-   /**
-    * Class outside the framework implement this method
-    * @param type
-    * @return null if not found
-    */
-   public String subToStringType(int type) {
-      switch (type) {
-         default:
-            return null;
-      }
-   }
-
-   public void toString(Dctx dc) {
-      dc.root(this, "BOPowerData");
-      super.toString(dc.nLevel());
-   }
-
-   public void toString1Line(Dctx dc) {
-      dc.root(this, "BOPowerData");
-   }
-   //#enddebug
-
-
-   public ByteObject getFlagOrdered(ByteObject bo, int offset, int flag) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-
-   public ByteObject merge(ByteObject root, ByteObject merge) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
 
    public boolean toString(Dctx dc, ByteObject bo) {
       // TODO Auto-generated method stub
@@ -157,19 +121,34 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       return false;
    }
 
-
    public String toStringOffset(ByteObject o, int offset) {
       // TODO Auto-generated method stub
       return null;
    }
-
 
    public String toStringType(int type) {
       // TODO Auto-generated method stub
       return null;
    }
 
+   //#mdebug
+   public void toString(Dctx dc) {
+      dc.root(this, BOPowerDataModule.class, "@line5");
+      toStringPrivate(dc);
+      super.toString(dc.sup());
+   }
 
- 
+   private void toStringPrivate(Dctx dc) {
+      
+   }
+
+   public void toString1Line(Dctx dc) {
+      dc.root1Line(this, BOPowerDataModule.class);
+      toStringPrivate(dc);
+      super.toString1Line(dc.sup1Line());
+   }
+
+   //#enddebug
+   
 
 }

@@ -133,7 +133,7 @@ public abstract class PowerCharTrieRoot extends PowerBuildBase implements IPower
 
    public void toString(Dctx dc) {
       dc.root(this, "PowerCharTrieRoot");
-      super.toString(dc.nLevel());
+      super.toString(dc.newLevel());
    }
 
    public void toString1Line(Dctx dc) {

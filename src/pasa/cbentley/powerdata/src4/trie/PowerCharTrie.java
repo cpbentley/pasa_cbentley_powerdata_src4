@@ -1223,9 +1223,9 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
       dc.root(this, "PowerCharTrie");
       toStringPrivate(dc);
       super.toString(dc.sup());
-      pdc.getTechFactory().toStringTechCharTrie(dc.nLevel(), this);
-      charco.toString(dc.nLevel());
-      nodedata.toString(dc.nLevel());
+      pdc.getTechFactory().toStringTechCharTrie(dc.newLevel(), this);
+      charco.toString(dc.newLevel());
+      nodedata.toString(dc.newLevel());
    }
 
    private void toStringPrivate(Dctx dc) {

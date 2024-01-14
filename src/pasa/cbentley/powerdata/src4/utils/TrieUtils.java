@@ -15,41 +15,5 @@ import pasa.cbentley.powerdata.src4.trie.PowerTrieLink;
 
 public class TrieUtils implements ITechCharCol {
 
-   private PDCtx pdc;
-
-   public TrieUtils(PDCtx pdc) {
-      this.pdc = pdc;
-   }
-
-
-
-   //#mdebug
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
-   public void toString(Dctx dc) {
-      dc.root(this, "TrieUtils");
-      toStringPrivate(dc);
-   }
-
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
-   }
-
-   public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "TrieUtils");
-      toStringPrivate(dc);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return pdc.getUCtx();
-   }
-
-   private void toStringPrivate(Dctx dc) {
-
-   }
-
-   //#enddebug
 
 }

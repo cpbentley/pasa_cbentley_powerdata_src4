@@ -2,11 +2,11 @@ package pasa.cbentley.powerdata.src4.ctx;
 
 import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
+import pasa.cbentley.byteobjects.src4.core.interfaces.IBOAgentManaged;
 import pasa.cbentley.byteobjects.src4.ctx.IBOTypesBOC;
-import pasa.cbentley.byteobjects.src4.ctx.IDebugStringable;
-import pasa.cbentley.byteobjects.src4.tech.ITechObjectManaged;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
+import pasa.cbentley.core.src4.logging.IDebugStringable;
 import pasa.cbentley.powerdata.spec.src4.engine.TechFactory;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerDataTypes;
 
@@ -34,12 +34,12 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
 
    }
 
-   public ByteObject getFlagOrdered(ByteObject bo, int offset, int flag) {
+   public ByteObject getFlagOrderedBO(ByteObject bo, int offset, int flag) {
       // TODO Auto-generated method stub
       return null;
    }
 
-   public String getIDString(int did, int value) {
+   public String toStringGetDIDString(int did, int value) {
       return null;
    }
 
@@ -53,14 +53,14 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
    }
 
    /**
-    * {@link ITechObjectManaged#AGENT_BASE_TYPE} which is {@link IBOTypesBOC#TYPE_035_STRUCT}.
+    * {@link IBOAgentManaged#AGENT_BASE_TYPE} which is {@link IBOTypesBOC#TYPE_035_STRUCT}.
     * 
     */
    public void subToString(Dctx dc, ByteObject bo) {
       int type = bo.getType();
       switch (type) {
-         case ITechObjectManaged.AGENT_BASE_TYPE:
-            int subtype = bo.get2(ITechObjectManaged.AGENT_OFFSET_05_CLASS_ID2);
+         case IBOAgentManaged.AGENT_BASE_TYPE:
+            int subtype = bo.get2(IBOAgentManaged.AGENT_OFFSET_05_CLASS_ID2);
             subToStringClass(bo, dc, subtype);
          default:
       }
@@ -69,14 +69,14 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
    public void subToString1Line(Dctx dc, ByteObject bo) {
       int type = bo.getType();
       switch (type) {
-         case ITechObjectManaged.AGENT_BASE_TYPE:
-            int subtype = bo.get2(ITechObjectManaged.AGENT_OFFSET_05_CLASS_ID2);
+         case IBOAgentManaged.AGENT_BASE_TYPE:
+            int subtype = bo.get2(IBOAgentManaged.AGENT_OFFSET_05_CLASS_ID2);
             subToStringClass(bo, dc, subtype);
       }
    }
 
    /**
-    * String representation of the header given the class id from {@link ITechObjectManaged#AGENT_OFFSET_05_CLASS_ID2}
+    * String representation of the header given the class id from {@link IBOAgentManaged#AGENT_OFFSET_05_CLASS_ID2}
     * <br>
     * <br>
     * 

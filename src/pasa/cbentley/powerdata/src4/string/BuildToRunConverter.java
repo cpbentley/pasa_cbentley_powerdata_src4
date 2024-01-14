@@ -11,6 +11,7 @@ import pasa.cbentley.core.src4.utils.ShortUtils;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerCharCollector;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharColBuild;
 import pasa.cbentley.powerdata.spec.src4.power.itech.ITechCharColRun;
+import pasa.cbentley.powerdata.src4.ctx.ObjectPDC;
 import pasa.cbentley.powerdata.src4.ctx.PDCtx;
 import pasa.cbentley.powerdata.src4.integer.PowerIntArrayRun;
 
@@ -19,7 +20,7 @@ import pasa.cbentley.powerdata.src4.integer.PowerIntArrayRun;
  * @author Charles Bentley
  *
  */
-public class BuildToRunConverter implements ITechCharColRun {
+public class BuildToRunConverter extends ObjectPDC implements ITechCharColRun {
 
    public static final int   CHAR_COL_RUN_0_ = 0;
 
@@ -41,8 +42,6 @@ public class BuildToRunConverter implements ITechCharColRun {
    * the size of the biggest set of length/letter set
    */
    private int               maxNumberLetter = 0;
-
-   private final PDCtx       pdc;
 
    private int               planeCollector;
 
@@ -79,7 +78,7 @@ public class BuildToRunConverter implements ITechCharColRun {
    private PowerIntArrayRun  startLetterBag;
 
    public BuildToRunConverter(PDCtx pdc) {
-      this.pdc = pdc;
+      super(pdc);
    }
 
    protected byte[] copyChars(int[][] sizes, int[][][] mapping) {
@@ -354,17 +353,10 @@ public class BuildToRunConverter implements ITechCharColRun {
    }
 
    //#mdebug
-   public String toString() {
-      return Dctx.toString(this);
-   }
-
    public void toString(Dctx dc) {
-      dc.root(this, "BuildToRunConverter");
+      dc.root(this, BuildToRunConverter.class, "@line5");
       toStringPrivate(dc);
-   }
-
-   public String toString1Line() {
-      return Dctx.toString1Line(this);
+      super.toString(dc.sup());
    }
 
    private void toStringPrivate(Dctx dc) {
@@ -372,12 +364,9 @@ public class BuildToRunConverter implements ITechCharColRun {
    }
 
    public void toString1Line(Dctx dc) {
-      dc.root1Line(this, "BuildToRunConverter");
+      dc.root1Line(this, BuildToRunConverter.class);
       toStringPrivate(dc);
-   }
-
-   public UCtx toStringGetUCtx() {
-      return pdc.getUCtx();
+      super.toString1Line(dc.sup1Line());
    }
 
    //#enddebug

@@ -3,8 +3,8 @@ package pasa.cbentley.powerdata.src4.base;
 import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteController;
 import pasa.cbentley.byteobjects.src4.core.ByteObjectManaged;
-import pasa.cbentley.byteobjects.src4.interfaces.IJavaObjectFactory;
-import pasa.cbentley.byteobjects.src4.tech.ITechObjectManaged;
+import pasa.cbentley.byteobjects.src4.core.interfaces.IJavaObjectFactory;
+import pasa.cbentley.byteobjects.src4.core.interfaces.IBOAgentManaged;
 import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.powerdata.spec.src4.power.IPowerCharCollector;
@@ -77,7 +77,7 @@ public class PowerFactory implements IJavaObjectFactory, IPowerDataTypes, ITechM
          throw new NullPointerException("#PowerFactory Cannot Create Object for Null Tech=");
       }
       ByteObjectManaged bom = null;
-      int classid = tech.get2(ITechObjectManaged.AGENT_OFFSET_05_CLASS_ID2);
+      int classid = tech.get2(IBOAgentManaged.AGENT_OFFSET_05_CLASS_ID2);
       bom = switchClassID(classid, tech);
       //      if (classid != 0) {
       //         if (classid == CLASS_TYPE_100_POWER_CHAR_TRIE) {
@@ -155,7 +155,7 @@ public class PowerFactory implements IJavaObjectFactory, IPowerDataTypes, ITechM
             ByteObjectManaged techb = pdc.getTechFactory().getPowerCharColBuildTechRoot();
             int classID = techb.getIDClass();
             techb.burnHeader(tech);
-            techb.set2(ITechObjectManaged.AGENT_OFFSET_05_CLASS_ID2, classID);
+            techb.set2(IBOAgentManaged.AGENT_OFFSET_05_CLASS_ID2, classID);
             bom = new PowerCharColBuild(pdc, techb);
          } else {
             //choose a Trie
@@ -198,7 +198,7 @@ public class PowerFactory implements IJavaObjectFactory, IPowerDataTypes, ITechM
          throw new NullPointerException("#PowerFactory Cannot Create Object for Null Tech=");
       }
       ByteObjectManaged bom = null;
-      int classid = tech.get2(ITechObjectManaged.AGENT_OFFSET_05_CLASS_ID2);
+      int classid = tech.get2(IBOAgentManaged.AGENT_OFFSET_05_CLASS_ID2);
       if (classid != 0) {
          bom = switchClassID(classid, tech);
       }

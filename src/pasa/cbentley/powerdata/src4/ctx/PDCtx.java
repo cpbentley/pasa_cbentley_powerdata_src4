@@ -16,16 +16,15 @@ public class PDCtx extends PDCtxA {
 
    private BOPowerDataModule boPowerData;
 
-   private Morpher      morpher;
+   private Morpher           morpher;
 
-   private PowerFactory powerFactory;
+   private PowerFactory      powerFactory;
 
    public PDCtx(UCtx uc, BOCtx boc) {
       super(uc, boc);
-      
-      //#debug
-      toDLog().pInit("Created", this, PDCtx.class, "PDCtx", LVL_05_FINE, true);
 
+      //#debug
+      toDLog().pInit("", this, PDCtx.class, "Created@30", LVL_05_FINE, true);
    }
 
    public BOModuleAbstract getBOModule() {

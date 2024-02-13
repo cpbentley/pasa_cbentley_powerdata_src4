@@ -168,7 +168,7 @@ public class PowerCharColLocale extends PowerBuildBase implements IEventConsumer
    public void initEmpty() {
       IStringProducer isp = null;
       IEventBus eb = pdc.getUCtx().getEventBusRoot();
-      eb.addConsumer(this, IEventsCore.PID_1_FRAMEWORK, IEventsCore.PID_1_FRAMEWORK_2_LANGUAGE_CHANGED);
+      eb.addConsumer(this, IEventsCore.PID_01_FRAMEWORK, IEventsCore.PID_01_FRAMEWORK_2_LANGUAGE_CHANGED);
       LocaleID lid = isp.getLocaleID();
       LocaleID rootlid = isp.getLocaleIDRoot();
       //based on the local load the

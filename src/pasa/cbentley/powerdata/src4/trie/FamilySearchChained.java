@@ -74,7 +74,7 @@ public class FamilySearchChained {
       int count = 0;
       while (nextSister != IPowerTrieNodes.NOT_A_NODE) {
          char firstchar = nodedata.getNodeChar(nextSister);
-         int comp = pdc.getUCtx().getCU().compareChar(mychar, firstchar);
+         int comp = pdc.getUC().getCU().compareChar(mychar, firstchar);
          if (comp == -1) {
             return count;
          }

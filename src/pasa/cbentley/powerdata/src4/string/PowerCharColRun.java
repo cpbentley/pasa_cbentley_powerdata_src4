@@ -205,7 +205,7 @@ public class PowerCharColRun extends PowerCharCol implements IPowerCharCollector
       int startletteroldsize = lettersFirst.getSize();
       int oldletterbits = letterBitSizeVal;
       int oldsize = lettersAll.getSize();
-      IntBuffer newoffset = new IntBuffer(pdc.getUCtx());
+      IntBuffer newoffset = new IntBuffer(pdc.getUC());
 
       //this value is FIXED at 16 bits
       int bigIndexNumBits = getBigIndexNumBits();
@@ -484,7 +484,7 @@ public class PowerCharColRun extends PowerCharCol implements IPowerCharCollector
 
    public Object getMorph(MorphParams p) {
       if (p.cl == IntToStrings.class) {
-         IntToStrings its = new IntToStrings(pdc.getUCtx(), getSize());
+         IntToStrings its = new IntToStrings(pdc.getUC(), getSize());
          //iterate
 
       } else if (p.cl == PowerCharColBuild.class || p.type == ITechMorph.MODE_1_BUILD) {
@@ -1028,7 +1028,7 @@ public class PowerCharColRun extends PowerCharCol implements IPowerCharCollector
 
    public String toString(String nl) {
       String nnl = nl + "\t";
-      StringBBuilder sb = new StringBBuilder(pdc.getUCtx());
+      StringBBuilder sb = new StringBBuilder(pdc.getUC());
       try {
          int tablebitsize = (getBigIndexNumBits() + lettersFirst.getSize() * getSmallIndexNumBits()) * getMaxLength();
          sb.append("#PowerCharColRun");
@@ -1057,7 +1057,7 @@ public class PowerCharColRun extends PowerCharCol implements IPowerCharCollector
          sb.append("Letter bitsize=" + getLetterBitSize() + " ");
          sb.append(" BigIndex BitSize=" + getBigIndexNumBits() + " bits. SmallIndex BitSize=" + getSmallIndexNumBits() + " bits ");
 
-         BitCoordinate c = new BitCoordinate(pdc.getUCtx(), getHeaderTableOffsetLoaded(), 0);
+         BitCoordinate c = new BitCoordinate(pdc.getUC(), getHeaderTableOffsetLoaded(), 0);
          for (int i = 1; i <= getMaxLength(); i++) {
             int num = getBU().readBits(data, c, getBigIndexNumBits());
             sb.append(nl);

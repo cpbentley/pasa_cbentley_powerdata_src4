@@ -23,12 +23,12 @@ public abstract class PowerBase extends ByteObjectManaged {
    }
    
    public BitUtils getBU() {
-      return pdc.getUCtx().getBU();
+      return pdc.getUC().getBU();
    }
 
    
    protected BitCoordinate createBitCoordinate() {
-      return new BitCoordinate(pdc.getUCtx());
+      return new BitCoordinate(pdc.getUC());
    }
    
    //#mdebug

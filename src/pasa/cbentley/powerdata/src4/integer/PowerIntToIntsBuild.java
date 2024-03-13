@@ -99,7 +99,7 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
          int currentNumberOfItems = lengthsOfArrays[key];
          if (data[key].length <= currentNumberOfItems) {
             int newCapacity = currentNumberOfItems + currentNumberOfItems / 2;
-            data[key] = pdc.getUCtx().getMem().ensureCapacity(data[key], newCapacity);
+            data[key] = pdc.getUC().getMem().ensureCapacity(data[key], newCapacity);
          }
          return currentNumberOfItems;
       }
@@ -266,7 +266,7 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
     */
    protected void insideSetValuesForKey(int[] values, int key) {
       makeKeyValid(key);
-      this.data[key] = pdc.getUCtx().getIU().clone(values);
+      this.data[key] = pdc.getUC().getIU().clone(values);
       lengthsOfArrays[key] = values.length;
    }
 
@@ -315,7 +315,7 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
     * @return
     */
    public byte[] serializeRaw() {
-      BADataOS dos = new BADataOS(pdc.getUCtx());
+      BADataOS dos = new BADataOS(pdc.getUC());
       int size = getSize();
       dos.writeInt(size);
       for (int i = 0; i < size; i++) {

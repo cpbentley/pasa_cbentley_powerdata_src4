@@ -89,7 +89,7 @@ public class BuildToRunConverter extends ObjectPDC implements ITechCharColRun {
       }
       //length pointer table
       byte[] data = new byte[BitUtils.byteConsumed(bitsConsumed)];
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx(), 0, 0);
+      BitCoordinate c = new BitCoordinate(pdc.getUC(), 0, 0);
       int count = 1;
       //COPY NOW FROM MAPPING
       for (int L = 1; L < mapping.length; L++) {
@@ -162,7 +162,7 @@ public class BuildToRunConverter extends ObjectPDC implements ITechCharColRun {
 
       ///////// COPY HEADER TABLES
       int bytenum = CHAR_RUN_BASIC_SIZE + startLetterBag.getLength() + allLettersBag.getLength();
-      BitCoordinate ccc = new BitCoordinate(pdc.getUCtx(), bytenum, 0);
+      BitCoordinate ccc = new BitCoordinate(pdc.getUC(), bytenum, 0);
       for (int L = 1; L < sizes.length; L++) {
          int num = sizes[L][0];
          BitUtils.copyBits(header, ccc, num, numBitNumLength);
@@ -172,7 +172,7 @@ public class BuildToRunConverter extends ObjectPDC implements ITechCharColRun {
          }
       }
 
-      byte[] last = pdc.getUCtx().getMem().increaseCapacity(header, data.length);
+      byte[] last = pdc.getUC().getMem().increaseCapacity(header, data.length);
       //copy data
       System.arraycopy(data, 0, last, header.length, data.length);
       return last;
@@ -308,7 +308,7 @@ public class BuildToRunConverter extends ObjectPDC implements ITechCharColRun {
     */
    public int[] addIntToArray(int[] ar, int value) {
       if (ar[0] + 1 >= ar.length) {
-         ar = pdc.getUCtx().getMem().increaseCapacity(ar, ar.length);
+         ar = pdc.getUC().getMem().increaseCapacity(ar, ar.length);
       }
       ar[0]++;
       ar[ar[0]] = value;

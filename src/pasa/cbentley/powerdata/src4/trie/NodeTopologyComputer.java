@@ -48,7 +48,7 @@ public class NodeTopologyComputer {
     * @param leaves
     */
    private void addLeaves(int node, IntBuffer leaves) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       while (nodeBuffer.getSize() != 0) {
          node = nodeBuffer.removeLast();
@@ -83,7 +83,7 @@ public class NodeTopologyComputer {
       //
       IntToStrings src = (IntToStrings) linker.getMorph(null);
       //get all the bit values and the length of the bit word in position 1
-      IntToStrings its = new IntToStrings(pdc.getUCtx(), src.nextempty);
+      IntToStrings its = new IntToStrings(pdc.getUC(), src.nextempty);
       int totalint = 0;
       //System.out.println("BitString\t= #Appearances\t % of zeros covered ");
       for (int j = 0; j < src.nextempty; j++) {
@@ -191,8 +191,8 @@ public class NodeTopologyComputer {
     * @return
     */
    private String getNodeSignature(int node) {
-      StringBBuilder sb = new StringBBuilder(pdc.getUCtx());
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      StringBBuilder sb = new StringBBuilder(pdc.getUC());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int numFlags = nodedata.getTech().get1(ITechNodeData.NODEDATA_OFFSET_03_NUM_FLAGS1);
       while (nodeBuffer.getSize() != 0) {
@@ -232,7 +232,7 @@ public class NodeTopologyComputer {
 
       //get all the bit values and the length of the bit word in position 1
       int[] top = topoTrie.getValuesDatas();
-      IntToStrings its = new IntToStrings(pdc.getUCtx(), top.length / 2);
+      IntToStrings its = new IntToStrings(pdc.getUC(), top.length / 2);
       int totalint = 0;
       //System.out.println("BitString\t= #Appearances\t % of zeros covered ");
       for (int j = 0; j < top.length; j += 2) {
@@ -276,7 +276,7 @@ public class NodeTopologyComputer {
     * @param node
     */
    private int[] runCountDepth(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int[] depth = getArrayNodeIntToIntLinker();
       while (nodeBuffer.getSize() != 0) {
@@ -297,7 +297,7 @@ public class NodeTopologyComputer {
     * @return
     */
    private int[] runCountFamilies(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int[] results = new int[nodedata.getTech().get2(ITechNodeData.NODEDATA_OFFSET_06_MAX_FAMILYSIZE2)];
       while (nodeBuffer.getSize() != 0) {
@@ -310,7 +310,7 @@ public class NodeTopologyComputer {
    }
 
    private int runCountFlag(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int count = 0;
       while (nodeBuffer.getSize() != 0) {
@@ -359,10 +359,10 @@ public class NodeTopologyComputer {
          }
       }
 
-      IntBuffer grappedNodes = new IntBuffer(pdc.getUCtx());
+      IntBuffer grappedNodes = new IntBuffer(pdc.getUC());
       //elagage
       node = nodedata.getRootNode();
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int count = 0;
       while (nodeBuffer.getSize() != 0) {
@@ -405,7 +405,7 @@ public class NodeTopologyComputer {
     * @param node
     */
    private int[] runCountHeight(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int[] heights = getArrayNodeIntToIntLinker();
       while (nodeBuffer.getSize() != 0) {
@@ -431,7 +431,7 @@ public class NodeTopologyComputer {
     * @param node
     */
    private int runCountLeaves(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int count = 0;
       while (nodeBuffer.getSize() != 0) {
@@ -445,7 +445,7 @@ public class NodeTopologyComputer {
    }
 
    private int[] runCountLeavesAll(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int[] counts = getArrayNodeIntToIntLinker();
       while (nodeBuffer.getSize() != 0) {
@@ -457,7 +457,7 @@ public class NodeTopologyComputer {
    }
 
    private int runCountMaxFamilySize(int node) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int max = 0;
       while (nodeBuffer.getSize() != 0) {
@@ -483,7 +483,7 @@ public class NodeTopologyComputer {
    private int runCountNodes(int node) {
       //#debug
       System.out.println("#NodeToplogyComputer#countingNodes for " + node);
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       int count = 0;
       while (nodeBuffer.getSize() != 0) {
@@ -510,10 +510,10 @@ public class NodeTopologyComputer {
     * @param linker
     */
    private int[] runCountNumNodesBelow(int node) {
-      IntBuffer leaves = new IntBuffer(pdc.getUCtx());
+      IntBuffer leaves = new IntBuffer(pdc.getUC());
       addLeaves(node, leaves);
       int[] counts = getArrayNodeIntToIntLinker();
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       while (nodeBuffer.getSize() != 0) {
          node = nodeBuffer.removeLast();
@@ -524,7 +524,7 @@ public class NodeTopologyComputer {
    }
 
    private void runCountTopo(int node, IPowerLinkStringToInt linker) {
-      IntBuffer nodeBuffer = new IntBuffer(pdc.getUCtx());
+      IntBuffer nodeBuffer = new IntBuffer(pdc.getUC());
       nodeBuffer.addInt(node);
       while (nodeBuffer.getSize() != 0) {
          node = nodeBuffer.removeLast();
@@ -546,7 +546,7 @@ public class NodeTopologyComputer {
          if (familySize <= TOPOLOGY_FAMILY_SIZE_MAX) {
             // key of the Topology to the BitTrie: Topology = familySize and Pattern
             // Key Built
-            IntBuffer children = new IntBuffer(pdc.getUCtx());
+            IntBuffer children = new IntBuffer(pdc.getUC());
 
             nodedata.getNodeChildren(node, children);
             int size = children.getSize();

@@ -135,7 +135,7 @@ public class Morpher {
 
       //cases b becomes better when pointer
       byte[] data = new byte[dataSize];
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       int[] chunkOffsetsByte = new int[arraySizes];
       int[] chunkOffsetsBit = new int[arraySizes];
       //compute where each chunks will start

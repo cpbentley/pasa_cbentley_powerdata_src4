@@ -1192,7 +1192,7 @@ public class PowerOrderedIntToIntRun extends PowerRunBase implements IPowerIntAr
 
    public Object getMorph(MorphParams p) {
       if (p.cl == IntToInts.class) {
-         IntToInts its = new IntToInts(pdc.getUCtx());
+         IntToInts its = new IntToInts(pdc.getUC());
 
          return its;
       }
@@ -1991,7 +1991,7 @@ public class PowerOrderedIntToIntRun extends PowerRunBase implements IPowerIntAr
       int lastbit = getLastChunkBit(0);
       sb.append("Data Chunk coord=" + c.getBytenum() + ":" + c.getBitnum() + "\t (" + start + "-" + lastbit + "=" + (lastbit - start) + ")");
       int bytecons = getBU().byteConsumed((lastbit - start));
-      StringUtils su = pdc.getUCtx().getStrU();
+      StringUtils su = pdc.getUC().getStrU();
       sb.append("Data Size=" + su.prettyStringMem(bytecons) + " Header Size=" + su.prettyStringMem(getLastUsedByte() - bytecons));
       sb.nl();
       sb.append("Offsets :");

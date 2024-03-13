@@ -637,7 +637,7 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
          bu.addInt(parentNode);
          parentNode = nodedata.getNodeParent(parentNode);
       }
-      StringBBuilder sb = new StringBBuilder(pdc.getUCtx());
+      StringBBuilder sb = new StringBBuilder(pdc.getUC());
       int size = bu.getSize();
       for (int i = 0; i < size; i++) {
          int node = bu.removeLast();
@@ -845,7 +845,7 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
 
       //check if prefix nodes
       if (tss.isFirstFrame()) {
-         tss.sb = new StringBBuilder(pdc.getUCtx());
+         tss.sb = new StringBBuilder(pdc.getUC());
          //init the first nodes to be explored.
          if (tss.isAll()) {
             //special case because it involves the special root node.
@@ -854,7 +854,7 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
             //this mean all words ""
             nodedata.getNodeChildren(nodedata.getRootNode(), tss.nodesBeingExplored, isReverse);
          } else {
-            IntBuffer pre = new IntBuffer(pdc.getUCtx(), 5);
+            IntBuffer pre = new IntBuffer(pdc.getUC(), 5);
             //we need to fetch the prefix nodes. 
             tss.searchRootNode = getPrefixedNodes(pre, tss.str, tss);
             //add the node to kick start the buffer
@@ -892,7 +892,7 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
       boolean isFinished = false;
       //for alphabetical order add the children node in reverse order so first node is processed first in the loop
       boolean isReverse = !ss.isReverse();
-      StringBBuilder sb = new StringBBuilder(pdc.getUCtx());
+      StringBBuilder sb = new StringBBuilder(pdc.getUC());
       //append the prefix
       sb.append(ss.chars, ss.charsOffset, ss.charsLen);
       //algo runs untils all nodes are processed
@@ -950,7 +950,7 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
       //contains full list of nodes.
       IntBufferMatrix listOfNodes = tss.dataBuffer;
 
-      StringBBuilder sb = new StringBBuilder(pdc.getUCtx());
+      StringBBuilder sb = new StringBBuilder(pdc.getUC());
 
       int prefixSize = tss.prefixNodes.getSize();
 

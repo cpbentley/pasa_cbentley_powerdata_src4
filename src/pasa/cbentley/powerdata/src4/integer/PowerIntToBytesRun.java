@@ -360,7 +360,7 @@ public class PowerIntToBytesRun extends PowerIntToBytes implements ITechIntToByt
       for (int rid = start; rid < end; rid++) {
          byte[] b = getBytes(rid);
          dc.nl();
-         dc.append(rid + " = " + pdc.getUCtx().getBU().toStringBytes(b, 0, ","));
+         dc.append(rid + " = " + pdc.getUC().getBU().toStringBytes(b, 0, ","));
       }
    }
 

@@ -160,7 +160,7 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       super(pdc, cr, tech);
       trie = cr;
       searchType = tech.get1(SEARCH_TRIE_OFFSET_02_TYPE1);
-      UCtx uc = pdc.getUCtx();
+      UCtx uc = pdc.getUC();
       dataBuffer = new IntBufferMatrix(uc);
 
       familyHolder = new IntBuffer(uc, 6);
@@ -171,8 +171,8 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       nodesLastFamily = new IntBuffer(uc, 6);
       prefixNodes = new IntBuffer(uc);
       
-      stringCurrent = new StringBBuilder(pdc.getUCtx());
-      sb = new StringBBuilder(pdc.getUCtx());
+      stringCurrent = new StringBBuilder(pdc.getUC());
+      sb = new StringBBuilder(pdc.getUC());
 
    }
 
@@ -323,7 +323,7 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     */
    public boolean wasAdded(Object o) {
       if (insides == null) {
-         insides = new IntToObjects(pdc.getUCtx());
+         insides = new IntToObjects(pdc.getUC());
       }
       boolean b = insides.hasObject(o);
       if (!b) {

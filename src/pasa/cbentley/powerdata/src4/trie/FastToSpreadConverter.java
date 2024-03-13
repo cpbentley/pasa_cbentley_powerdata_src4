@@ -555,8 +555,8 @@ public class FastToSpreadConverter {
       //debug data
       int[] newchildren = new int[onesPatterned + numberOfNonPatternedNodes];
       //bit coordinate
-      BitCoordinate childrenCoordinate = new BitCoordinate(pdc.getUCtx(),childrenOffset, 0);
-      BitCoordinate subClassDataCoordinate = new BitCoordinate(pdc.getUCtx(),subClassDataOffset, 0);
+      BitCoordinate childrenCoordinate = new BitCoordinate(pdc.getUC(),childrenOffset, 0);
+      BitCoordinate subClassDataCoordinate = new BitCoordinate(pdc.getUC(),subClassDataOffset, 0);
 
       //System.out.println("New Root=" + _newrootposition);
       int countpcopy = 0;
@@ -659,7 +659,7 @@ public class FastToSpreadConverter {
    protected void linkParentsChildren(int bitParentRefSize, int[] pPointers, byte[] fullData, int parentOffset) {
       if (isUsingParentPointers()) {
          //start straight at parent offset
-         BitCoordinate parentCoordinate = new BitCoordinate(pdc.getUCtx(), parentOffset, 0);
+         BitCoordinate parentCoordinate = new BitCoordinate(pdc.getUC(), parentOffset, 0);
          BitUtils.copyBits(fullData, parentCoordinate, bitParentRefSize, 8);
          //System.out.println("start writing parent data at " + parentOffset + " bitsize=" + bitParentRefSize);
          int lastpointer = -1;

@@ -374,13 +374,13 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
          int len = charData[i].length;
          if (len >= sizes.length) {
             //increase the number of rows
-            sizes = pdc.getUCtx().getMem().increaseCapacityNonEmpty(sizes, len - sizes.length + 1, startsize);
+            sizes = pdc.getUC().getMem().increaseCapacityNonEmpty(sizes, len - sizes.length + 1, startsize);
             sizes[len][0] = 1;
             sizes[len][1] = i;
          } else {
             int position = sizes[len][0] + 1;
             if (position >= sizes[len].length) {
-               sizes[len] = pdc.getUCtx().getMem().increaseCapacity(sizes[len], sizes[len].length);
+               sizes[len] = pdc.getUC().getMem().increaseCapacity(sizes[len], sizes[len].length);
             }
             sizes[len][position] = i;
             sizes[len][0]++;
@@ -544,7 +544,7 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
       printDataStruct("#CharPowerColBuild Rebuilding " + (lastused + 1 - start) + " strings " + " start=" + start + " basePlane=" + plane);
 
       //heap space allocation that is risky. we cannot trust the serialization. could be a data attack.
-      charData = pdc.getUCtx().getMem().createCharArrayDouble(lastused + 1);
+      charData = pdc.getUC().getMem().createCharArrayDouble(lastused + 1);
       if (charData == null) {
          //#debug
          printDataStruct("#CharPowerColBuild Could not Create Char[][] of size " + (lastused + 1));
@@ -622,7 +622,7 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
    }
 
    private String toStringInside() {
-      Dctx d = new Dctx(pdc.getUCtx(), "\n\t");
+      Dctx d = new Dctx(pdc.getUC(), "\n\t");
       toStringInside(d);
       return d.toString();
    }

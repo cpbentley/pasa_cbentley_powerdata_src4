@@ -73,7 +73,7 @@ public class PowerIntToBytesBuild extends PowerIntToBytes {
    }
 
    public byte[] serializeRaw() {
-      BADataOS bos = new BADataOS(pdc.getUCtx());
+      BADataOS bos = new BADataOS(pdc.getUC());
       bos.writeInt(data.length);
       for (int i = 0; i < data.length; i++) {
          if (flags[i] == 0) {
@@ -127,7 +127,7 @@ public class PowerIntToBytesBuild extends PowerIntToBytes {
    }
 
    public int addBytes(byte[] b, int offset, int len) {
-      data = pdc.getUCtx().getMem().increaseCapacity(data, 1);
+      data = pdc.getUC().getMem().increaseCapacity(data, 1);
       int id = data.length - 1;
       data[id] = b;
       increment(ITB_OFFSET_04_NUM_ELEMENTS4, 4, 1);
@@ -155,7 +155,7 @@ public class PowerIntToBytesBuild extends PowerIntToBytes {
       for (int rid = start; rid < end; rid++) {
          byte[] b = getBytes(rid);
          dc.nl();
-         dc.append(rid + " = " + pdc.getUCtx().getBU().debugString(b, 0, ","));
+         dc.append(rid + " = " + pdc.getUC().getBU().debugString(b, 0, ","));
       }
    }
 

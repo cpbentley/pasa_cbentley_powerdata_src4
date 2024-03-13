@@ -136,7 +136,7 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
       //      System.out.println("#FastNodeData bitsChild=" + bitSizeChild + " bitsFamily=" + bitSizeFamily + " bitsFlags=" + bitSizeFlags + " bitsParent=" + bitSizeParent + " bitsLoad=" + bitSizeLoad
       //            + " bitSizeRight=" + bitSizeRight + " lastused=" + lastused);
 
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx(), offset, 0);
+      BitCoordinate c = new BitCoordinate(pdc.getUC(), offset, 0);
       c.tick();
       for (int i = 1; i <= lastused; i++) {
          offsetToChild[i] = BitUtils.readBits(data, c, bitSizeChild);
@@ -225,12 +225,12 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
          int incr = offsetToChild.length;
          arrayGrowSize += incr;
          incrementArrays(incr);
-         offsetToParent = pdc.getUCtx().getMem().increaseCapacity(offsetToParent, incr);
-         offsetToFamily = pdc.getUCtx().getMem().increaseCapacity(offsetToFamily, incr);
-         offsetToChild = pdc.getUCtx().getMem().increaseCapacity(offsetToChild, incr);
-         offsetToRight = pdc.getUCtx().getMem().increaseCapacity(offsetToRight, incr);
-         offsetToFlags = pdc.getUCtx().getMem().increaseCapacity(offsetToFlags, incr);
-         offsetToPayload = pdc.getUCtx().getMem().increaseCapacity(offsetToPayload, incr);
+         offsetToParent = pdc.getUC().getMem().increaseCapacity(offsetToParent, incr);
+         offsetToFamily = pdc.getUC().getMem().increaseCapacity(offsetToFamily, incr);
+         offsetToChild = pdc.getUC().getMem().increaseCapacity(offsetToChild, incr);
+         offsetToRight = pdc.getUC().getMem().increaseCapacity(offsetToRight, incr);
+         offsetToFlags = pdc.getUC().getMem().increaseCapacity(offsetToFlags, incr);
+         offsetToPayload = pdc.getUC().getMem().increaseCapacity(offsetToPayload, incr);
          statTimeArrayGrowing += (System.currentTimeMillis() - time);
       }
    }
@@ -491,7 +491,7 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
       //      System.out.println("#FastNodeData bitsChild=" + bitSizeChild + " bitsFamily=" + bitSizeFamily + " bitsFlags=" + bitSizeFlags + " bitsParent=" + bitSizeParent + " bitsLoad=" + bitSizePayLoad
       //            + " bitSizeRight=" + bitSizeRight + " lastused=" + lastused);
 
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx(), offset, 0);
+      BitCoordinate c = new BitCoordinate(pdc.getUC(), offset, 0);
       for (int i = 1; i <= lastused; i++) {
          BitUtils.copyBits(data, c, offsetToChild[i], bitSizeChild);
          BitUtils.copyBits(data, c, offsetToFamily[i], bitSizeFamily);
@@ -627,7 +627,7 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
    }
 
    public String toStringNode(int i) {
-      Dctx d = new Dctx(pdc.getUCtx(), "\n\t");
+      Dctx d = new Dctx(pdc.getUC(), "\n\t");
       toStringNode(d, i);
       return d.toString();
    }

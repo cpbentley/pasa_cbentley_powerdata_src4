@@ -683,7 +683,7 @@ public class CharCollectorRunLight extends PowerCharCol implements IPowerCharCol
          sb.append(',');
       }
       //now prints the header table
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx(), headerTableOffset, 0);
+      BitCoordinate c = new BitCoordinate(pdc.getUC(), headerTableOffset, 0);
       int alphaStartSize = lettersFirst.getSize();
       int alphaBitSize = BitUtils.widthInBits(lettersAll.getSize());
       sb.append("\n Alpha Start Bitsize:" + alphaStartSize + "\t Full Alpha Bitsize :" + alphaBitSize);

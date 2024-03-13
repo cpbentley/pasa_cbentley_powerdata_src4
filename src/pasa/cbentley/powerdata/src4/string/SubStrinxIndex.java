@@ -42,7 +42,7 @@ public class SubStrinxIndex extends PowerBuildBase {
    public void buildIndex() {
 
       int minSize = 4;
-      IntToStrings its = new IntToStrings(pdc.getUCtx(), 1);
+      IntToStrings its = new IntToStrings(pdc.getUC(), 1);
       IPowerEnum pe = charco.getEnumOnCharCol(IPowerCharCollector.ENUM_TYPE_3_INTSTRINGS, its);
       while (pe.hasNext()) {
          pe.getNext();

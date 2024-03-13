@@ -30,7 +30,7 @@ public class CharAggregateSearch extends CharSearchSession {
 
    public CharAggregateSearch(PDCtx pdc, PowerCharColAggregate co, ByteObject tech) {
       super(pdc, co, tech);
-      fifo = new FiFoQueue(pdc.getUCtx());
+      fifo = new FiFoQueue(pdc.getUC());
    }
 
    public int[] getActivations() {
@@ -50,7 +50,7 @@ public class CharAggregateSearch extends CharSearchSession {
     */
    public boolean isSearched(Object o) {
       if (insides == null) {
-         insides = new IntToObjects(pdc.getUCtx());
+         insides = new IntToObjects(pdc.getUC());
       }
       boolean b = insides.hasObject(o);
       for (int i = 0; i < sess.length; i++) {
@@ -180,7 +180,7 @@ public class CharAggregateSearch extends CharSearchSession {
     */
    public boolean wasAdded(Object o) {
       if (insides == null) {
-         insides = new IntToObjects(pdc.getUCtx());
+         insides = new IntToObjects(pdc.getUC());
       }
       boolean b = insides.hasObject(o);
 

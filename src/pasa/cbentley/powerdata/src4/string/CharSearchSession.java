@@ -119,7 +119,7 @@ public class CharSearchSession implements ITechSearchChar, ICharComparator, ISea
       }
       this.tech = tech;
       this.charcol = co;
-      result = new IntToStrings(pdc.getUCtx(), 5);
+      result = new IntToStrings(pdc.getUC(), 5);
       type = tech.get1(SEARCH_CHAR_OFFSET_03_SEARCH_TYPE1);
       resetTypeComp();
    }
@@ -247,7 +247,7 @@ public class CharSearchSession implements ITechSearchChar, ICharComparator, ISea
          searchWait();
       }
       int prefixSize = str.length();
-      IntBuffer ib = new IntBuffer(pdc.getUCtx());
+      IntBuffer ib = new IntBuffer(pdc.getUC());
       for (int i = 0; i < result.nextempty; i++) {
          char c = result.strings[i].charAt(prefixSize);
          if (!ib.contains(c)) {
@@ -436,7 +436,7 @@ public class CharSearchSession implements ITechSearchChar, ICharComparator, ISea
    }
 
    public UCtx toStringGetUCtx() {
-      return pdc.getUCtx();
+      return pdc.getUC();
    }
 
    //#enddebug

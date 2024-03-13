@@ -83,7 +83,7 @@ public class FamilySearchPacked {
       char c = '+';
       while ((lowerbound <= upperbound) && ((c = nodedata.getNodeChar(node)) != mychar)) {
          compare_count++;
-         if (pdc.getUCtx().getCU().compareChar(c, mychar) == 1) {
+         if (pdc.getUC().getCU().compareChar(c, mychar) == 1) {
             upperbound = node - 1; // search position minus one.
          } else {
             lowerbound = node + 1; // Else, change lowerbound to search position plus one.
@@ -107,7 +107,7 @@ public class FamilySearchPacked {
       for (int i = 0; i < familySize; i++) {
          //get first character of the child
          char firstchar = nodedata.getNodeChar(childPointer + i);
-         int comp = pdc.getUCtx().getCU().compareChar(mychar, firstchar);
+         int comp = pdc.getUC().getCU().compareChar(mychar, firstchar);
          if (comp == -1) {
             //insert
             return childPointer + i;

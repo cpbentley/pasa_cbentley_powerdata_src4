@@ -38,7 +38,7 @@ public class PowerOrderedIntToIntBuf extends PowerBuildBase implements IPowerInt
    }
 
    protected void initEmpty() {
-      ints = new IntToInts(pdc.getUCtx(), IntToInts.TYPE_1UNO_ORDER, 6, false, -1);
+      ints = new IntToInts(pdc.getUC(), IntToInts.TYPE_1UNO_ORDER, 6, false, -1);
    }
 
    public void addValue(int value) {
@@ -157,7 +157,7 @@ public class PowerOrderedIntToIntBuf extends PowerBuildBase implements IPowerInt
       int soff = getDataOffsetStartLoaded();
       int num = IntUtils.readIntBE(data, soff);
       soff += 4;
-      ints = new IntToInts(pdc.getUCtx(), IntToInts.TYPE_1UNO_ORDER, 6, false, -1, num * 2);
+      ints = new IntToInts(pdc.getUC(), IntToInts.TYPE_1UNO_ORDER, 6, false, -1, num * 2);
       for (int i = 0; i < num; i++) {
          int uno = IntUtils.readIntBE(data, soff);
          soff += 4;

@@ -131,7 +131,7 @@ public class PowerIntToIntsRun extends PowerIntToInts implements IPowerLinkIntTo
    }
 
    public int[] getKeysValues(int[] keys) {
-      IntBuffer ib = new IntBuffer(pdc.getUCtx());
+      IntBuffer ib = new IntBuffer(pdc.getUC());
       for (int i = 0; i < keys.length; i++) {
          int key = keys[i];
          ib.addInt(getKeyValues(key));

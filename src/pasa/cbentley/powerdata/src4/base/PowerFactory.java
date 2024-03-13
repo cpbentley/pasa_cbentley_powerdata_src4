@@ -331,7 +331,7 @@ public class PowerFactory implements IJavaObjectFactory, IPowerDataTypes, ITechM
    }
 
    public UCtx toStringGetUCtx() {
-      return pdc.getUCtx();
+      return pdc.getUC();
    }
    //#enddebug
 

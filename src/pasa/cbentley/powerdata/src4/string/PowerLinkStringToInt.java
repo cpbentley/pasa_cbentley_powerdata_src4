@@ -115,7 +115,7 @@ public class PowerLinkStringToInt extends PowerStringLinker implements IPointerU
    private int insideGetStringPointer(char[] cs, int offset, int len) {
       int insidePointer = insideGetOrCreateInsidePointer(cs, offset, len);
       if (insidePointer >= ints.length) {
-         ints = pdc.getUCtx().getMem().increaseCapacity(ints, 100);
+         ints = pdc.getUC().getMem().increaseCapacity(ints, 100);
       }
       if (insidePointer >= nextEmpty) {
          nextEmpty = insidePointer + 1;

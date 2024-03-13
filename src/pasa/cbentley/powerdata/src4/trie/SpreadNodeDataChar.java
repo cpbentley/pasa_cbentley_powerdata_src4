@@ -65,7 +65,7 @@ public class SpreadNodeDataChar extends SpreadNodeData implements ITechSpreadNod
    }
 
    public int getNodeCharPointer(int node) {
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       c.map((subClassDataOffset * 8) + 8 + ((node - 1) * (bitCharSize + 1)));
       return BitUtils.readBits(data, c, bitCharSize);
    }
@@ -82,7 +82,7 @@ public class SpreadNodeDataChar extends SpreadNodeData implements ITechSpreadNod
 
    public boolean isUserNode(int node) {
       //minus 1 because Spread nodes start at 1
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       c.map((subClassDataOffset * 8) + 8 + ((node - 1) * (bitCharSize + 1)) + bitCharSize);
       return BitUtils.readBit(data, c) == 1;
    }
@@ -120,7 +120,7 @@ public class SpreadNodeDataChar extends SpreadNodeData implements ITechSpreadNod
          expandChar(BitUtils.widthInBits(pointer));
          throw new RuntimeException("");
       }
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       c.map((subClassDataOffset * 8) + 8 + ((node - 1) * (bitCharSize + 1)));
       BitUtils.copyBits(data, c, pointer, bitCharSize);
    }
@@ -136,13 +136,13 @@ public class SpreadNodeDataChar extends SpreadNodeData implements ITechSpreadNod
    }
 
    public void setWordBit(int node, int bit) {
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       c.map((subClassDataOffset * 8) + 8 + ((node - 1) * (bitCharSize + 1)) + bitCharSize);
       BitUtils.copyBit(data, c, bit);
    }
 
    private BitCoordinate createBitCoordinate() {
-      BitCoordinate c = new BitCoordinate(pdc.getUCtx());
+      BitCoordinate c = new BitCoordinate(pdc.getUC());
       return c;
    }
 

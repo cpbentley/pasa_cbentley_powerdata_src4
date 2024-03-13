@@ -93,7 +93,7 @@ public class PowerLinkStringHashtableBuild extends PowerBuildBase implements IPo
    public byte[] serializeRaw() {
       int size = ht.size();
       Enumeration en = ht.keys();
-      BADataOS bos = new BADataOS(pdc.getUCtx());
+      BADataOS bos = new BADataOS(pdc.getUC());
       bos.writeInt(size);
       while (en.hasMoreElements()) {
          String str = (String) en.nextElement();
@@ -141,7 +141,7 @@ public class PowerLinkStringHashtableBuild extends PowerBuildBase implements IPo
          String str = (String) en.nextElement();
          dc.append(str);
          byte[] data = (byte[]) ht.get(str);
-         dc.append(" " + pdc.getUCtx().getBU().debugString(data, 0, ","));
+         dc.append(" " + pdc.getUC().getBU().debugString(data, 0, ","));
          count++;
          if (count == countOnLine) {
             dc.nl();

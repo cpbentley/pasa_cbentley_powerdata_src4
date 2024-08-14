@@ -31,12 +31,6 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     */
    public int                customIndex;
 
-   public ISearchSession[]   subs;
-
-   public IntToObjects       insides;
-
-   public boolean            isDeepFirst;
-
    /**
     * When a search is looking into the base  CharTrie and also in auxilliary tries?
     * How do you define that? That will depend on the CharTrie implementation.
@@ -58,6 +52,18 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     * 
     */
    IntBuffer                 familyHolder;
+
+   /**
+    * History of {@link IntToStrings} while doing a search. This allows
+    * to quickly returns a result after a remove
+    */
+   private IntToObjects      history;
+
+   public IntToObjects       insides;
+
+   public boolean            isDeepFirst;
+
+   boolean                   isSearching      = false;
 
    /**
     * Tracks the last visited nodes. This can be seen as a row in all the Trie entries.
@@ -100,13 +106,6 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
    IntBuffer                 nodesLastFamily;
 
    /**
-    * Set when prefix was not found.
-    */
-   boolean                   prefixNotFound;
-
-   boolean                   isSearching      = false;
-
-   /**
     * The Trie Nodes that represent the prefix.
     * <br>
     * <br>
@@ -116,6 +115,13 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     * {@link ICharTrie#getWord(int)}
     */
    IntBuffer                 prefixNodes;
+
+   /**
+    * Set when prefix was not found.
+    */
+   boolean                   prefixNotFound;
+
+   StringBBuilder            sb;
 
    /**
     * The node of the prefix.
@@ -131,12 +137,17 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     */
    int                       searchRootNode   = IPowerTrieNodes.NOT_A_NODE;
 
-   StringBBuilder            sb;
+   /**
+    * Words, Leaves, Non Leaves. Non Words
+    */
+   private int               searchType;
 
    /**
     * Base String of the current search.
     */
    StringBBuilder            stringCurrent;
+
+   public ISearchSession[]   subs;
 
    /**
     * We have no idea how is implemented the Nodedata.
@@ -144,17 +155,6 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
     * but maybe something else.
     */
    private PowerCharTrieRoot trie;
-
-   /**
-    * Words, Leaves, Non Leaves. Non Words
-    */
-   private int               searchType;
-
-   /**
-    * History of {@link IntToStrings} while doing a search. This allows
-    * to quickly returns a result after a remove
-    */
-   private IntToObjects      history;
 
    public TrieSearchSession(PDCtx pdc, PowerCharTrieRoot cr, ByteObject tech) {
       super(pdc, cr, tech);
@@ -170,45 +170,10 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
 
       nodesLastFamily = new IntBuffer(uc, 6);
       prefixNodes = new IntBuffer(uc);
-      
+
       stringCurrent = new StringBBuilder(pdc.getUC());
       sb = new StringBBuilder(pdc.getUC());
 
-   }
-
-   public void buildNodes1(StringBBuilder sb) {
-      int prefixSize = sb.getCount();
-      //when using frame
-      int start = getStart();
-
-      int end = getEnd(); //end exclusive offset in buffer matrix
-
-      //iterate over the framed IntBufferMatrix
-      for (int i = start; i < end; i++) {
-
-         IntBuffer mybuf = dataBuffer.getRow(i);
-         if (mybuf != null) {
-            int rowOffset = 1 + prefixSize;
-            int rowLen = mybuf.getSize() - prefixSize;
-            trie.buildString(mybuf.getIntsRef(), rowOffset, rowLen, sb);
-            //the pointer for later getWord or identification
-            int lastnode = mybuf.getLast();
-            String finalString = sb.toString();
-
-            //another structure may decide to reject a string based on some tests
-            if (acceptString(finalString)) {
-               result.add(lastnode, finalString);
-               //reset stringbuilder to the prefix
-            } else {
-               //increment end
-               end++;
-            }
-            sb.setCount(prefixSize);
-         } else {
-            //break as soon as we find a null
-            break;
-         }
-      }
    }
 
    /**
@@ -226,37 +191,13 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       return true;
    }
 
-   /**
-    * We delegate the search to the {@link IPowerCharTrie} implementation.
-    * <br>
-    *  
-    * When first call is made
-    */
-   public void search() {
-      trie.search(this);
-      searchFrameCount++;
+   public void addResults(IntToStrings searchWait) {
+      // TODO Auto-generated method stub
+
    }
 
-   /**
-    * 
-    * @return
-    */
-   public int getEnd() {
-      int frameSize = getFrameSize();
-      if (frameSize == 0) {
-         return dataBuffer.getSize();
-      } else {
-         return getStart() + frameSize;
-      }
-   }
-
-   public int getStart() {
-      int frameSize = getFrameSize();
-      if (frameSize == 0) {
-         return 0;
-      } else {
-         return searchFrameCount * frameSize;
-      }
+   public void addSession(ISearchSession issNewWords) {
+      issNewWords.subordinateTo(this);
    }
 
    public void algoX(IPowerTrieNodesChar nodedata) {
@@ -316,21 +257,84 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       }
    }
 
+   public void buildNodes1(StringBBuilder sb) {
+      int prefixSize = sb.getCount();
+      //when using frame
+      int start = getStart();
+
+      int end = getEnd(); //end exclusive offset in buffer matrix
+
+      //iterate over the framed IntBufferMatrix
+      for (int i = start; i < end; i++) {
+
+         IntBuffer mybuf = dataBuffer.getRow(i);
+         if (mybuf != null) {
+            int rowOffset = 1 + prefixSize;
+            int rowLen = mybuf.getSize() - prefixSize;
+            trie.buildString(mybuf.getIntsRef(), rowOffset, rowLen, sb);
+            //the pointer for later getWord or identification
+            int lastnode = mybuf.getLast();
+            String finalString = sb.toString();
+
+            //another structure may decide to reject a string based on some tests
+            if (acceptString(finalString)) {
+               result.add(lastnode, finalString);
+               //reset stringbuilder to the prefix
+            } else {
+               //increment end
+               end++;
+            }
+            sb.setCount(prefixSize);
+         } else {
+            //break as soon as we find a null
+            break;
+         }
+      }
+   }
+
    /**
     * 
-    * @param o
     * @return
     */
-   public boolean wasAdded(Object o) {
-      if (insides == null) {
-         insides = new IntToObjects(pdc.getUC());
+   public int getEnd() {
+      int frameSize = getFrameSize();
+      if (frameSize == 0) {
+         return dataBuffer.getSize();
+      } else {
+         return getStart() + frameSize;
       }
-      boolean b = insides.hasObject(o);
-      if (!b) {
-         insides.add(o);
-      }
-      return b;
    }
+
+   public int getStart() {
+      int frameSize = getFrameSize();
+      if (frameSize == 0) {
+         return 0;
+      } else {
+         return searchFrameCount * frameSize;
+      }
+   }
+
+   /**
+    * Inspect the last
+    */
+   public char[] nextPossibleChars() {
+      //implementation for a trie is easy
+      //get search root node
+      if (stringCurrent.getCount() > charsLen) {
+         // case Prefix "prem" is be matched to node "premi" because i is internally merged to prem.
+         //return i
+         return new char[] { stringCurrent.charAt(charsLen) };
+      } else {
+         //right on a node
+         int s = nodesBeingExplored.getSize();
+         char[] c = new char[s];
+         for (int i = 0; i < c.length; i++) {
+            c[i] = (char) nodesBeingExplored.get(i);
+         }
+         return c;
+      }
+   }
+
 
    protected void reset() {
       super.reset();
@@ -346,45 +350,15 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       result.nextempty = 0;
    }
 
-   //#mdebug
-
-   public void toString1Line(Dctx dc) {
-      dc.root(this, "TrieSearchSession");
-   }
-   //#enddebug
-
    /**
-    * 
+    * We delegate the search to the {@link IPowerCharTrie} implementation.
+    * <br>
+    *  
+    * When first call is made
     */
-   public void toString(Dctx sb) {
-      sb.root(this, "TrieSearchSession");
-      sb.nl();
-      pdc.getTechFactory().toStringTechTrieSearch(sb.newLevel(), tech);
-      sb.nl();
-      sb.append("searchRootNode=" + searchRootNode);
-      ///
-      if (searchRootNode != IPowerTrieNodes.NOT_A_NODE) {
-         sb.append(trie.getChars(searchRootNode));
-      }
-      sb.nlLvl("NodesFullyExplored", nodesFullyExplored);
-      ////
-      sb.nlLvl("NodesBeingExplored", nodesBeingExplored);
-      ////////////////////////
-      sb.nlLvl("lastVisitedRow", lastVisitedRow);
-      sb.nlLvl("familyHolder", familyHolder);
-      ////////////////////////
-      sb.nlLvl("prefixNodes", prefixNodes);
-      ////
-      sb.nlLvl("Current Results", result);
-   }
-
-   public void addSession(ISearchSession issNewWords) {
-      issNewWords.subordinateTo(this);
-   }
-
-   public void addResults(IntToStrings searchWait) {
-      // TODO Auto-generated method stub
-
+   public void search() {
+      trie.search(this);
+      searchFrameCount++;
    }
 
    /**
@@ -409,27 +383,48 @@ public class TrieSearchSession extends CharSearchSession implements ITechSearchT
       return super.searchRemove(v);
    }
 
-   /**
-    * Inspect the last
-    */
-   public char[] nextPossibleChars() {
-      //implementation for a trie is easy
-      //get search root node
-      if (stringCurrent.getCount() > charsLen) {
-         // case Prefix "prem" is be matched to node "premi" because i is internally merged to prem.
-         //return i
-         return new char[] { stringCurrent.charAt(charsLen) };
-      } else {
-         //right on a node
-         int s = nodesBeingExplored.getSize();
-         char[] c = new char[s];
-         for (int i = 0; i < c.length; i++) {
-            c[i] = (char) nodesBeingExplored.get(i);
-         }
-         return c;
+   //#mdebug
+   public void toString(Dctx sb) {
+      sb.root(this, "TrieSearchSession");
+      sb.nl();
+      pdc.getTechFactory().toStringTechTrieSearch(sb.newLevel(), tech);
+      sb.nl();
+      sb.append("searchRootNode=" + searchRootNode);
+      ///
+      if (searchRootNode != IPowerTrieNodes.NOT_A_NODE) {
+         sb.append(trie.getChars(searchRootNode));
       }
+      sb.nlLvl("NodesFullyExplored", nodesFullyExplored);
+      ////
+      sb.nlLvl("NodesBeingExplored", nodesBeingExplored);
+      ////////////////////////
+      sb.nlLvl("lastVisitedRow", lastVisitedRow);
+      sb.nlLvl("familyHolder", familyHolder);
+      ////////////////////////
+      sb.nlLvl("prefixNodes", prefixNodes);
+      ////
+      sb.nlLvl("Current Results", result);
    }
 
+   public void toString1Line(Dctx dc) {
+      dc.root(this, "TrieSearchSession");
+   }
    //#enddebug
+
+   /**
+    * 
+    * @param o
+    * @return
+    */
+   public boolean wasAdded(Object o) {
+      if (insides == null) {
+         insides = new IntToObjects(pdc.getUC());
+      }
+      boolean b = insides.hasObject(o);
+      if (!b) {
+         insides.add(o);
+      }
+      return b;
+   }
 
 }

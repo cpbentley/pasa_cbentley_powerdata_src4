@@ -261,6 +261,12 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
       }
    }
 
+   protected void insideSetKeyData(int key, int data) {
+      makeKeyValid(key);
+      this.data[key] = new int[] { data };
+      lengthsOfArrays[key] = 1;
+   }
+
    /**
     * Clone values
     */
@@ -268,12 +274,6 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
       makeKeyValid(key);
       this.data[key] = pdc.getUC().getIU().clone(values);
       lengthsOfArrays[key] = values.length;
-   }
-
-   protected void insideSetKeyData(int key, int data) {
-      makeKeyValid(key);
-      this.data[key] = new int[] { data };
-      lengthsOfArrays[key] = 1;
    }
 
    /**
@@ -353,12 +353,6 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
    }
 
    //#mdebug
-
-   public void toString1Line(Dctx dc) {
-      dc.root(this, "PowerIntToIntsBuild");
-   }
-   //#enddebug
-
    public void toString(Dctx sb) {
       sb.root(this, "PowerIntToIntsBuild");
       sb.appendVarWithSpace("Size", getSize());
@@ -403,6 +397,11 @@ public class PowerIntToIntsBuild extends PowerIntToInts implements IPowerLinkInt
          sb.append("data[] length is " + data.length);
       }
    }
+
+   public void toString1Line(Dctx dc) {
+      dc.root(this, "PowerIntToIntsBuild");
+   }
+   //#enddebug
 
    public void updatePointers(Object struct, Object mapping) {
       if (struct instanceof IPowerLinkIntToInt) {

@@ -431,8 +431,6 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
       return hasFlag(CHARCOL_OFFSET_01_FLAG1, CHARCOL_FLAG_3_DUPLICATES);
    }
 
-   //#enddebug
-
    /**
     * Checks the validity of the pointer to a non null 
     */
@@ -614,6 +612,7 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
       return bom;
    }
 
+   //#mdebug
    public void toString(Dctx dc) {
       //we modify the state. we cannot do that for debug purpose
       //methodStarts();
@@ -654,5 +653,5 @@ public class PowerCharColBuild extends PowerCharCol implements IPowerCharCollect
       sb.nl();
       sb.nlLvl("Index", indexString);
    }
-
+   //#enddebug
 }

@@ -28,7 +28,6 @@ import pasa.cbentley.powerdata.src4.ctx.PDCtx;
  *
  */
 public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNodes, ITechFastNodeData {
-   //#mdebug
 
    private int            arrayGrowSize;
 
@@ -635,7 +634,6 @@ public class FastNodeData extends FamilyChainedNodeData implements IPowerTrieNod
    public void toStringSub(Dctx sb, int offset) {
 
    }
-
    //#enddebug
 
 }

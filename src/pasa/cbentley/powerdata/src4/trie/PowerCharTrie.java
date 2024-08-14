@@ -42,7 +42,6 @@ public class PowerCharTrie extends PowerCharTrieRoot implements IPowerCharTrie, 
     */
    public static final int    SEARCH_DEFAULT_WORD_LIST_SIZE = 20;
 
-   //#enddebug
 
    public static final int    SEARCH_INTBUFFER_START_SIZE   = 20;
 

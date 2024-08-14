@@ -175,7 +175,6 @@ public class FastNodeDataChar extends FastNodeData implements IPowerTrieNodesCha
       charco.setChars(pointer, c, offset, len);
    }
 
-   //#mdebug
 
    //#mdebug
    public void toString(Dctx dc) {
@@ -193,9 +192,6 @@ public class FastNodeDataChar extends FastNodeData implements IPowerTrieNodesCha
       toStringPrivate(dc);
       super.toString1Line(dc.sup1Line());
    }
-
-   //#enddebug
-   
 
 
    public void toStringSub(Dctx sb, int offset) {

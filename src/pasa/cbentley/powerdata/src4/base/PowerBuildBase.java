@@ -47,6 +47,7 @@ public abstract class PowerBuildBase extends PowerBase implements IDataMorphable
    }
 
    public void printDataStruct(String log) {
+      //#debug
       pdc.getUC().toDLog().pMemory(log, this, PowerBuildBase.class, "printDataStruct", ITechLvl.LVL_05_FINE, true);
    }
 

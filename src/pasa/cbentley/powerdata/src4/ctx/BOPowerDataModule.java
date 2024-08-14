@@ -4,7 +4,6 @@ import pasa.cbentley.byteobjects.src4.core.BOModuleAbstract;
 import pasa.cbentley.byteobjects.src4.core.ByteObject;
 import pasa.cbentley.byteobjects.src4.core.interfaces.IBOAgentManaged;
 import pasa.cbentley.byteobjects.src4.ctx.IBOTypesBOC;
-import pasa.cbentley.core.src4.ctx.UCtx;
 import pasa.cbentley.core.src4.logging.Dctx;
 import pasa.cbentley.core.src4.logging.IDebugStringable;
 import pasa.cbentley.powerdata.spec.src4.engine.TechFactory;
@@ -39,10 +38,6 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       return null;
    }
 
-   public String toStringGetDIDString(int did, int value) {
-      return null;
-   }
-
    public ByteObject merge(ByteObject root, ByteObject merge) {
       int type = merge.getType();
       switch (type) {
@@ -52,6 +47,7 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       }
    }
 
+   //#mdebug
    /**
     * {@link IBOAgentManaged#AGENT_BASE_TYPE} which is {@link IBOTypesBOC#TYPE_035_STRUCT}.
     * 
@@ -109,37 +105,15 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       }
    }
 
-
-   public boolean toString(Dctx dc, ByteObject bo) {
-      // TODO Auto-generated method stub
-      return false;
-   }
-
-
-   public boolean toString1Line(Dctx dc, ByteObject bo) {
-      // TODO Auto-generated method stub
-      return false;
-   }
-
-   public String toStringOffset(ByteObject o, int offset) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   public String toStringType(int type) {
-      // TODO Auto-generated method stub
-      return null;
-   }
-
-   //#mdebug
    public void toString(Dctx dc) {
       dc.root(this, BOPowerDataModule.class, "@line5");
       toStringPrivate(dc);
       super.toString(dc.sup());
    }
 
-   private void toStringPrivate(Dctx dc) {
-      
+   public boolean toString(Dctx dc, ByteObject bo) {
+      // TODO Auto-generated method stub
+      return false;
    }
 
    public void toString1Line(Dctx dc) {
@@ -148,7 +122,29 @@ public class BOPowerDataModule extends BOModuleAbstract implements IDebugStringa
       super.toString1Line(dc.sup1Line());
    }
 
+   public boolean toString1Line(Dctx dc, ByteObject bo) {
+      // TODO Auto-generated method stub
+      return false;
+   }
+
+   public String toStringGetDIDString(int did, int value) {
+      return null;
+   }
+
+   public String toStringOffset(ByteObject o, int offset) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
+   private void toStringPrivate(Dctx dc) {
+
+   }
+
+   public String toStringType(int type) {
+      // TODO Auto-generated method stub
+      return null;
+   }
+
    //#enddebug
-   
 
 }
